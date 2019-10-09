@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-k8s
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-k8s
+  template:
+    metadata:
+      labels:
+        app: my-k8s
+    spec:
+      containers:
+        - name: my-fw-cont
+          image: tqhuy1996developer/k8s
+          ports:
+            - containerPort: 80
+              name: web
+          resources:
+            requests:
+              memory: "50Mi"
+              cpu: "50m"
+            limits:
+              memory: "75Mi"
+              cpu: "75m"
